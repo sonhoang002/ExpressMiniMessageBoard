@@ -18,14 +18,16 @@
 
       <section class="message-list" aria-label="Messages">
         <% messages.forEach((message, index) => { %>
-          <article class="message-card">
-            <h2><%= message.user %></h2>
-            <p><%= message.text %></p>
-            <div class="message-meta">
-              <time><%= message.added.toLocaleString() %></time>
-              <a class="text-link" href="/<%= index %>">Open message →</a>
-            </div>
-          </article>
+        <article class="message-card">
+          <h2><%= message.user %></h2>
+          <p><%= message.text %></p>
+          <div class="message-meta">
+            <time><%= message.added.toLocaleString() %></time>
+            <a class="text-link" href="/messages/<%= index %>"
+              >Open message →</a
+            >
+          </div>
+        </article>
         <% }) %>
       </section>
     </main>

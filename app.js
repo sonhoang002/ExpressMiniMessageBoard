@@ -16,9 +16,12 @@ app.use(express.urlencoded({ extended: true }));
 
 // Connect routes to these paths
 app.use("/", indexRouter);
+app.use("/messages", itemRoute);
 app.use("/new", newMessageRouter);
-app.use("/:id", itemRoute);
 
+app.use((req, res) => {
+  res.status(404).render("404");
+});
 const PORT = 3000;
 
 app.listen(PORT, console.log(`Listening on port ${PORT}`));
