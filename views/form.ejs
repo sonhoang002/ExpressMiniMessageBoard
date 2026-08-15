@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Message | Mini Messageboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page-shell page-shell--narrow">
+      <a class="back-link" href="/">← Back to messages</a>
+      <section class="form-panel">
+        <p class="eyebrow">Join the conversation</p>
+        <h1>Write a new message</h1>
+        <form method="POST" action="/new">
+          <div class="form-field">
+            <label for="userInput">Your name</label>
+            <input type="text" id="userInput" name="userName" required />
+          </div>
+          <div class="form-field">
+            <label for="textInput">Message</label>
+            <textarea id="textInput" name="userText" rows="6" required></textarea>
+          </div>
+          <button class="button" type="submit">Post message</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

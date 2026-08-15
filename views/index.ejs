@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">Community board</p>
+          <h1><%= title %></h1>
+        </div>
+        <a class="button" href="/new">New message</a>
+      </header>
+
+      <section class="message-list" aria-label="Messages">
+        <% messages.forEach((message, index) => { %>
+          <article class="message-card">
+            <h2><%= message.user %></h2>
+            <p><%= message.text %></p>
+            <div class="message-meta">
+              <time><%= message.added.toLocaleString() %></time>
+              <a class="text-link" href="/<%= index %>">Open message →</a>
+            </div>
+          </article>
+        <% }) %>
+      </section>
+    </main>
+  </body>
+</html>
