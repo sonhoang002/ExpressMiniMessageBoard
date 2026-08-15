@@ -8,6 +8,7 @@ A small message board built with Express and EJS. Visitors can view messages, op
 - See the author, message, and date posted
 - Open a page with an individual message's details
 - Add a new message through a form
+- Display a custom 404 page for unknown routes and invalid message IDs
 - Responsive monochrome interface
 
 ## Built with
@@ -54,12 +55,14 @@ npm run dev
 
 ## Routes
 
-| Method | Route  | Description                         |
-| ------ | ------ | ----------------------------------- |
-| GET    | `/`    | Display all messages                |
-| GET    | `/new` | Display the new-message form        |
-| POST   | `/new` | Create a message and return home    |
-| GET    | `/:id` | Display an individual message       |
+| Method | Route           | Description                              |
+| ------ | --------------- | ---------------------------------------- |
+| GET    | `/`             | Display all messages                     |
+| GET    | `/new`          | Display the new-message form             |
+| POST   | `/new`          | Create a message and return home         |
+| GET    | `/messages/:id` | Display the message at the requested ID  |
+
+An invalid message ID or any unrecognized route returns a custom `404` page.
 
 ## Project structure
 
@@ -74,7 +77,8 @@ ExpressMiniMessageBoard/
 ├── views/
 │   ├── form.ejs
 │   ├── index.ejs
-│   └── messageDetail.ejs
+│   ├── messageDetail.ejs
+│   └── 404.ejs
 ├── app.js
 └── package.json
 ```
