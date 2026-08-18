@@ -1,8 +1,6 @@
 const express = require("express");
 const newMessageRouter = express.Router();
+const indexController = require("../controller/indexController");
 
-newMessageRouter.get("/", (req, res) => {
-  res.render("form");
-});
-
+newMessageRouter.get("/", indexController.newMessageGet);
 module.exports = newMessageRouter;

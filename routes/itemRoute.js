@@ -1,15 +1,8 @@
-const { messages } = require("./indexRoute");
 const express = require("express");
 const itemRoute = express.Router();
+const indexController = require("../controller/indexController");
+const db = require("../database/queries");
 
-itemRoute.get("/:id", (req, res) => {
-  const id = Number(req.params.id);
-
-  if (!Number.isInteger(id) || id < 0 || id >= messages.length) {
-    return res.status(404).render("404");
-  }
-
-  res.render("messageDetail", { messages: messages[id] });
-});
+itemRoute.get("/:id", indexController.messageGet);
 
 module.exports = itemRoute;

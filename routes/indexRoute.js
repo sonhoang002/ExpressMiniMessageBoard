@@ -1,31 +1,26 @@
 const express = require("express");
 const indexRouter = express.Router({ mergeParams: true });
+const indexController = require("../controller/indexController");
+const { body } = require("express-validator");
 
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date(),
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date(),
-  },
-];
+indexRouter.get("/", indexController.messagesAllGet);
 
-indexRouter.get("/", (req, res) => {
-  res.render("index", { title: "Mini Messageboard", messages: messages });
-});
+indexRouter.post(
+  "/new",
+  body("userName")
+    .trim()
+    .notEmpty()
+    .withMessage("Username can't be empty.")
+    .isLength({ max: 255 })
+    .withMessage("Username must be 255 characters or fewer."),
 
-indexRouter.post("/new", (req, res) => {
-  messages.push({
-    text: req.body.userText,
-    user: req.body.userName,
-    added: new Date(),
-  });
+  body("userText")
+    .trim()
+    .notEmpty()
+    .withMessage("Message can't be empty.")
+    .isLength({ max: 1000 })
+    .withMessage("Message must be 1000 characters or fewer."),
+  indexController.messagePost,
+);
 
-  res.redirect("/");
-});
-
-module.exports = { indexRouter, messages };
+module.exports = indexRouter;

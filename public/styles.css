@@ -146,6 +146,24 @@ h2 {
   margin-bottom: 1.25rem;
 }
 
+.form-errors:has(.form-error) {
+  display: grid;
+  gap: 0.5rem;
+  margin: -0.75rem 0 1.25rem;
+}
+
+.form-error {
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #b42318;
+  border-left-width: 0.35rem;
+  border-radius: 0.35rem;
+  background: #fff1f0;
+  color: #8a1c13;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
 label {
   font-weight: 700;
 }

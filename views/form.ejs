@@ -17,9 +17,28 @@
             <label for="userInput">Your name</label>
             <input type="text" id="userInput" name="userName" required />
           </div>
+          <div class="form-errors">
+            <% (errors || []).forEach((error) => { %>
+              <% if (error.path === "userName") { %>
+                <div class="form-error" role="alert"><%= error.msg %></div>
+              <% } %>
+            <% }) %>
+          </div>
           <div class="form-field">
             <label for="textInput">Message</label>
-            <textarea id="textInput" name="userText" rows="6" required></textarea>
+            <textarea
+              id="textInput"
+              name="userText"
+              rows="6"
+              required
+            ></textarea>
+          </div>
+          <div class="form-errors">
+            <% (errors || []).forEach((error) => { %>
+              <% if (error.path === "userText") { %>
+                <div class="form-error" role="alert"><%= error.msg %></div>
+              <% } %>
+            <% }) %>
           </div>
           <button class="button" type="submit">Post message</button>
         </form>
